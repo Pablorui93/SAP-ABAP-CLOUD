@@ -1,0 +1,56 @@
+
+managed implementation in class ZBP_R_TFLIGHT_CA3 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_TFLIGHT_CA3 alias ZrTflightCa3
+persistent table ZTFLIGHT_CA3
+extensible
+draft table ZTFLIGHT_CA3_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( mandatory : create )
+   CarrierID,
+   ConnectionID,
+   FlightDate;
+
+  field ( readonly )
+   LocalCreateBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( readonly : update )
+   CarrierID,
+   ConnectionID,
+   FlightDate;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZTFLIGHT_CA3 corresponding extensible
+  {
+    CarrierID = carrier_id;
+    ConnectionID = connection_id;
+    FlightDate = flight_date;
+    Price = price;
+    CurrencyCode = currency_code;
+    LocalCreateBy = local_create_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+  }
+
+}

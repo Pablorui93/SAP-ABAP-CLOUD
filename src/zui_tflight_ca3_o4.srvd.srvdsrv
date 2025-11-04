@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_TFLIGHT_CA3'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_TFLIGHT_CA3'
+  }
+}
+define service ZUI_TFLIGHT_CA3_O4 provider contracts odata_v4_ui {
+  expose ZC_TFLIGHT_CA3;
+}
